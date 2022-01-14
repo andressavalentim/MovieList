@@ -20,7 +20,6 @@ const updateUi = () => {
     }
 };
 
-
 const renderNewMovie = (id, title, imageUrl, rating) => {
     const newMovieElement = document.createElement('li');
     newMovieElement.className = 'movie-element';
@@ -31,13 +30,11 @@ const renderNewMovie = (id, title, imageUrl, rating) => {
         <div class="movie-element__info">
         <h2>${title} </h2>
         <p>${rating}/ 5stars </p>
-        <p>${id}</p>
         </div>
     `;
     newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id))
     const listRoot = document.getElementById('movie-list');
     listRoot.append(newMovieElement);
-    console.log(id)
 };
 
 const deleteMovie = movieId => {
@@ -48,14 +45,13 @@ const deleteMovie = movieId => {
         }
         movieIndex++;
     }
-    console.log(movieIndex);
     movies.splice(movieIndex, 1);
     const listRoot = document.getElementById('movie-list');
     listRoot.children[movieIndex].remove();
     closeMovieDeletionModal();
     updateUi();
 
-}
+};
 
 const deleteMovieHandler = (movieId) => {
     deleteMovieModal.classList.add('visible');
@@ -75,7 +71,7 @@ const deleteMovieHandler = (movieId) => {
 const closeMovieDeletionModal = () =>{
     toggleBackDrop();
     deleteMovieModal.classList.remove('visible');
-}
+};
 
 const closeMovieModal = () => {
     addMovieModal.classList.remove('visible');
@@ -109,7 +105,7 @@ const clearMovieInput = () => {
 const cancelAddMovieHandler = () => {
     closeMovieModal();
     clearMovieInput();
-}
+};
 
 const addMovieHandler = () => {
 
@@ -132,7 +128,7 @@ const addMovieHandler = () => {
     renderNewMovie(newMovie.id, newMovie.title, newMovie.image, newMovie.rating)
     updateUi();
     
-}
+};
 
 startAddMovieButton.addEventListener('click', showMovieModal);
 backDrop.addEventListener('click', backdropClickHander);
